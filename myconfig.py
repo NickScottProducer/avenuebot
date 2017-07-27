@@ -1,0 +1,17 @@
+first_name = "nick"
+last_name = "scott"
+email = "nssolesandstreetwear@gmail.com"
+phone = "6666666666"#no dashes
+birth_day = "2" #print with no '0' before if single digit(Feb would be "2")
+birth_month = "9" #same applies here as with birth_day
+birth_year = "1990"#full year (so 1990 for example, rather than 90)
+address1 = "123 wack street" #street address
+address2 = "room 2"
+zipcode = "49534"
+city = "grand rapids"
+card_type = "visa" #all lowercase
+cc_numb = "1234567812345678"
+cc_code = "666"
+cc_name = "test" #first and last
+cc_exp_mo = "07" #example is using '07' for july
+cc_exp_year = "23"# example is '21' for 2021
