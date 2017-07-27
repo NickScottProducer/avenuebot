@@ -13,29 +13,26 @@ session.headers.update(headers)
 
 def get_sizes():
     global session
-    endpoint = "http://www.avenuestore.be/en/nike-nikelab-womens-air-vapormax-flyknit-tea-berry.html"
-    response = session.get(endpoint, headers=headers)
-    soup = bs(response.text,"html.parser")
-    option = soup.find_all("option",{"data-value":True})
-    sizes_in_stock = []
-    for size in option:
-        if "available" in size["data-status"]:
-            size_id = size['data-value']            
-            sizes_in_stock.append(size_id)
-    return sizes_in_stock
+    try:
+        endpoint = raw_input("\n copy+paste the link then hit enter:")
+        response = session.get(endpoint, headers=headers)
+        soup = bs(response.text,"html.parser")
+        option = soup.find_all("option",{"data-value":True})
+        sizes_in_stock = []
+        for size in option:
+            if "available" in size["data-status"]:
+                size_id = size['data-value']            
+                sizes_in_stock.append(size_id)
+        return sizes_in_stock
+    except:
+        print "Sizes not in stock"
 
 def add_to_cart():
     global session
     sizes0 = get_sizes()
-
-
-    sizes0 = get_sizes()
-
     size_chosen = random.choice(sizes0)
-
-
     endpoint = 'http://www.avenuestore.be/en/cart/add/' + (size_chosen)
-    print endpoint
+    print 'link to cart is ' + endpoint
     response = session.get(endpoint,headers=headers)
     return response
 
@@ -96,16 +93,11 @@ def checkout():
         }
     response2 = session.post(endpoint2, data=payload2)
     soup = bs(response2.text,"html.parser")
-    print soup
-def main():
-
-    ask = raw_input('Are you sure? [y/n]:')
+    print 'success'
     
-    if ask == 'Y' or ask == 'y':
-        add_to_cart()
-        checkout()
-    else:
-        print 'ok then'
+    
+def main():
+    add_to_cart()
+    checkout()
 
 main()
-
