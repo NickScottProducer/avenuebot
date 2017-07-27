@@ -1,5 +1,7 @@
 # avenuebot
 
+requires python 2.7
+
 adds to cart and checks out
 
 download as a zip
